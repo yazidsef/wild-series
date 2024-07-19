@@ -1,1 +1,3 @@
-[les principales caractéristiques et fonctionnazlités sont ] 
+<h1>Wild series </h1>
+## Fonctionnalités
+
