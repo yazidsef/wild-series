@@ -38,6 +38,9 @@ class Program
     #[ORM\OneToMany(targetEntity: Season::class, mappedBy: 'proram_id', orphanRemoval: true)]
     private Collection $seasons;
 
+    #[ORM\ManyToOne(inversedBy: 'program_id')]
+    private ?ProgramActor $programActor = null;
+
     public function __construct()
     {
         $this->seasons = new ArrayCollection();
@@ -134,6 +137,18 @@ class Program
                 $season->setProramId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProgramActor(): ?ProgramActor
+    {
+        return $this->programActor;
+    }
+
+    public function setProgramActor(?ProgramActor $programActor): static
+    {
+        $this->programActor = $programActor;
 
         return $this;
     }
