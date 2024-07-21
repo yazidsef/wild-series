@@ -1,0 +1,23 @@
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+    width: 95%;
+    margin: auto;
+}
+ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ul li {
+    margin-right: 1rem;
+}
+form input{
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    width:100%;
+}

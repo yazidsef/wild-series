@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root{
+    --primary-color: rgb(0, 0, 0);
+    --second-primary-color:#ffffff;
+
+    /* SECONDARY COLORS  */
+    --first-secondary-color: #E50914;
+    --second-secondary-color: #FFD700;
+    --third-secondary-color: #1F8EF1;
+
+    /* Complementary colors */
+    --first-complementary-color: #B0B0B0;
+    --second-complementary-color: #39FF14;
+
+    /* font families */
+    /*
+    open sans pour le text principale et Bebas Neue pour les titres
+    */
+    --first-font-family: 'Bebas Neue', cursive;
+    --second-font-family: 'Open Sans', sans-serif;
+
+}
+body{
+    background-color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+h1,h2,h3{
+    color: var(--second-primary-color);
+    font-family: 'Bebas Neue', cursive;
+}
+a{
+    text-decoration: none;
+    color: var(--second-primary-color);
+    
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+

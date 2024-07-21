@@ -55,7 +55,13 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
-
+    const fullConfig = Encore.getWebpackConfig();
+    fullConfig.devServer = {
+    watchFiles: {
+        paths: ['templates/**/*.html.twig'],
+                },
+    };
+module.exports = fullConfig;
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 
