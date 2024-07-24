@@ -27,8 +27,17 @@ header video{
     margin-top: 20rem;
 }
 .most-watched{
-   position: absolute;
+   position: relative;
    bottom: 14rem;
    margin: 0 auto;
-   height: 10rem;
+
+
+}
+.description{
+    margin-top: 2rem;
+    width: 60%;
+    text-align: justify;
+}
+.fa {
+    color: red;
 }

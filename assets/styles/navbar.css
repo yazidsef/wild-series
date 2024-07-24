@@ -21,3 +21,8 @@ form input{
     border-radius: 5px;
     width:100%;
 }
+.description{
+    margin-top: 2rem;
+    width: 60%;
+    text-align: justify;
+}
