@@ -1,0 +1,34 @@
+header{
+     width: 100%;
+     height: 50vh;
+     background-size: cover;  
+}
+header video{
+    width: 100%;
+    height: 90vh;
+    object-fit: cover;  
+}
+.header-title{
+    position: absolute;
+    top: 17rem;
+    left: 10rem;
+}
+.header-title h1{
+    font-size: 4rem;
+    color: white;
+}
+.header-title p{
+    font-size: 1.5rem;
+    color: white;
+    width: 60%;
+    text-align: justify;
+}
+.container{
+    margin-top: 20rem;
+}
+.most-watched{
+   position: absolute;
+   bottom: 14rem;
+   margin: 0 auto;
+   height: 10rem;
+}

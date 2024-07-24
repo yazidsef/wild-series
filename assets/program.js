@@ -17,3 +17,4 @@ var swiper = new Swiper(".mySwiper", {
         }
     }
   });
+  import './styles/program.css';

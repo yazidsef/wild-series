@@ -13,3 +13,4 @@
 import './styles/app.css';
 import './styles/navbar.css';
 import './styles/main.css';
+import './styles/program.css';
