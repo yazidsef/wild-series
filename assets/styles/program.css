@@ -35,12 +35,17 @@ header video{
 }
 .description{
     text-align: justify;
+    height: 6rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Number of lines to show */
+    -webkit-box-orient: vertical;
 }
 .fa {
     color: red;
 }
 .col{
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 video{
     width: 80%;
@@ -59,6 +64,8 @@ video{
     grid-column: 1/3;
     grid-row: 6/8;
     filter: opacity(0.9);
+    position: relative;
+    top: 6rem;
 }
 .village-title{
     position: relative;
@@ -79,6 +86,35 @@ video{
     text-shadow: 0.2rem 0.2rem 0.4rem white;
     padding: 0.5rem;
     color: var(--primary-color);
+    box-shadow:0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
+    margin: 0 auto;
+    filter: opacity(2);
+}
+.john-wick{
+    box-sizing: border-box;
+    border:0.5rem solid var(--second-primary-color);
+    height: 50rem;
+}
+.johnwick-title{
+    position: relative;
+    bottom: 40rem;
+    font-size:4rem ;
+    color: var(--second-primary-color);
+    box-shadow:0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
+    margin: 0 auto;
+    width: 40%;
+    filter: opacity(2);
+}
+.johnwick-text{
+    position: relative;
+    bottom: 20rem;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    text-align: justify;
+    font-weight: bold;
+    padding: 0.5rem;
+    color: var(--second-primary-color);
     box-shadow:0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
     margin: 0 auto;
     filter: opacity(2);

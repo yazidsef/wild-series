@@ -26,7 +26,7 @@
                   <img src="{{ asset('build/images/e1.jpg') }}" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h2 class="text-black">title</h2>
-                    <p class="card-text text-black description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="card-text text-black description">{{program.synopsis}}</p>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -37,22 +37,10 @@
               </div>
             </div>
             {% if loop.index == 8 %}
-            <div class="col">
-              <div class="swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">Slide 1</div>
-                    <div class="swiper-slide">Slide 2</div>
-                    <div class="swiper-slide">Slide 3</div>
-                    <!-- Ajoutez plus de slides si nécessaire -->
-                </div>
-                <!-- Pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- Navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <!-- Scrollbar (optionnel) -->
-                <div class="swiper-scrollbar"></div>
-            </div>
+            <div class="col john-wick">
+              <img src="{{asset('build/images/johnwick.png')}}" alt="">
+              <h3 class="johnwick-title">JOHN WICK</h3>
+              <p class="johnwick-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eum expedita enim facilis neque molestiae quasi facere qui temporibus error. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos quaerat nulla quia neque reiciendis ex tempora sapiente esse aliquid odio.</p>
             </div>
             {% endif %}
             {% if loop.index == 19%}
