@@ -38,6 +38,7 @@ header video{
     height: 6rem;
     overflow: hidden;
     display: -webkit-box;
+    line-clamp: 5; /* Number of lines to show */
     -webkit-line-clamp: 5; /* Number of lines to show */
     -webkit-box-orient: vertical;
 }
@@ -118,4 +119,24 @@ video{
     box-shadow:0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
     margin: 0 auto;
     filter: opacity(2);
+}
+.pagination{
+    display: flex;
+    width: fit-content;
+    margin: 2rem auto;
+    font-size: 1.3rem;
+}
+.pagination a{
+    padding: 0 0.5rem;
+    color: var(--third-secondary-color);
+    font-size: 1.3rem;
+}
+
+/* here we start the css of the show page */
+
+.details{
+    display: grid;
+}
+.program-image{
+    margin: 0 auto;
 }
