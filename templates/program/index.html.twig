@@ -22,7 +22,7 @@
             {% for program in programs %}
             <div class="col  d-flex justify-content-center">   
               <div class="card" style="width: 18rem;">
-                <a href="#">
+                <a href="{{path('program_new' , {id:program.id})}}">
                   <img src="{{ asset('build/images/e1.jpg') }}" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h2 class="text-black">title</h2>
@@ -58,73 +58,11 @@
             {% endfor %}
           </div>
         </div>
+            {{ knp_pagination_render(programs) }}
+
     </section>
  
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-   
+    
     <br>
     <br>
     <br>
