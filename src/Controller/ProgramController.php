@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Episode;
 use App\Entity\Program;
+use App\Entity\Season;
 use App\Repository\ProgramRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,11 +28,34 @@ class ProgramController extends AbstractController
             'programs' => $program,
         ]);
     }
+
+    //methode show pour affichier les details d'un programme
     #[Route('/{id}',name:'new' , requirements: ['id' => '\d+'])]
     public function show(int $id , Program $program):Response
     {
-        return $this->render('program/list.html.twig',[
+        return $this->render('program/show.html.twig',[
             'program'=>$program
+        ]);
+    }
+
+    //methode showSeason pour afficher les details d'une saison
+    #[Route('/{program}/season/{season}',name:'season_show' , requirements: ['id' => '\d+'])]
+    public function showSeason(int $id , Season $season , Program $program):Response
+    {
+        return $this->render('season/show.html.twig',[
+            'season'=>$season,
+            'program'=>$program
+        ]);
+    }
+
+    //methode showEpisode pour afficher les details d'un episode
+    #[Route('//{id}/season/{seasonId}/episode/{episodeId}',name:'episode_show' , requirements: ['id' => '\d+'])]
+    public function showEpisode(int $id , Program $program ,Season $season , Episode $episode):Response
+    {
+        return $this->render('episode/show.html.twig',[
+            'program'=>$program,
+            'season'=>$season,
+            'episode'=>$episode
         ]);
     }
 }

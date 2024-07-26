@@ -1,82 +1,99 @@
-header{
-     width: 100%;
-     height: 50vh;
-     background-size: cover;  
+header {
+    width: 100%;
+    height: 50vh;
+    background-size: cover;
 }
-header video{
+
+header video {
     width: 100%;
     height: 90vh;
-    object-fit: cover;  
+    object-fit: cover;
 }
-.header-title{
+
+.header-title {
     position: absolute;
     top: 17rem;
     left: 10rem;
 }
-.header-title h1{
+
+.header-title h1 {
     font-size: 4rem;
     color: white;
 }
-.header-title p{
+
+.header-title p {
     font-size: 1.5rem;
     color: white;
     width: 60%;
     text-align: justify;
 }
-.container{
+
+.container {
     margin-top: 20rem;
 }
-.most-watched{
-   position: relative;
-   bottom: 8rem;
-   margin: 0 auto;
+
+.most-watched {
+    position: relative;
+    bottom: 8rem;
+    margin: 0 auto;
 
 
 }
-.description{
+
+.description {
     text-align: justify;
     height: 6rem;
     overflow: hidden;
     display: -webkit-box;
-    line-clamp: 5; /* Number of lines to show */
-    -webkit-line-clamp: 5; /* Number of lines to show */
+    line-clamp: 5;
+    /* Number of lines to show */
+    -webkit-line-clamp: 5;
+    /* Number of lines to show */
     -webkit-box-orient: vertical;
 }
+
 .fa {
-    color: red;
+    color: var(--second-secondary-color);
 }
-.col{
+
+.col {
     margin-top: 2rem;
 }
-video{
+
+video {
     width: 80%;
     height: 100%;
     object-fit: cover;
     filter: saturate(0) brightness(1.3);
 }
-.program-cards{
+
+.program-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
-.program-cards :nth-child(9){
+
+.program-cards :nth-child(9) {
     grid-column: 1/5;
 }
-.program-cards :nth-child(21){
+
+.program-cards :nth-child(21) {
     grid-column: 1/3;
     grid-row: 6/8;
     filter: opacity(0.9);
     position: relative;
 }
-.village-title{
+
+.village-title {
     position: relative;
     bottom: 50rem;
-    font-size:4rem ;
+    font-size: 4rem;
     color: var(--primary-color);
-    box-shadow:0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
+    box-shadow: 0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
     margin: 0 auto;
     filter: opacity(2);
 }
-.village-text{
+
+.village-text {
     position: relative;
     bottom: 45rem;
     width: 60%;
@@ -86,26 +103,29 @@ video{
     text-shadow: 0.2rem 0.2rem 0.4rem white;
     padding: 0.5rem;
     color: var(--primary-color);
-    box-shadow:0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
+    box-shadow: 0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
     margin: 0 auto;
     filter: opacity(2);
 }
-.john-wick{
+
+.john-wick {
     box-sizing: border-box;
-    border:0.5rem solid var(--second-primary-color);
+    border: 0.5rem solid var(--second-primary-color);
     height: 50rem;
 }
-.johnwick-title{
+
+.johnwick-title {
     position: relative;
     bottom: 40rem;
-    font-size:4rem ;
+    font-size: 4rem;
     color: var(--second-primary-color);
-    box-shadow:0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
+    box-shadow: 0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
     margin: 0 auto;
     width: 40%;
     filter: opacity(2);
 }
-.johnwick-text{
+
+.johnwick-text {
     position: relative;
     bottom: 20rem;
     width: 80%;
@@ -115,17 +135,19 @@ video{
     font-weight: bold;
     padding: 0.5rem;
     color: var(--second-primary-color);
-    box-shadow:0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
+    box-shadow: 0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
     margin: 0 auto;
     filter: opacity(2);
 }
-.pagination{
+
+.pagination {
     display: flex;
     width: fit-content;
     margin: 2rem auto;
     font-size: 1.3rem;
 }
-.pagination a{
+
+.pagination a {
     padding: 0 0.5rem;
     color: var(--third-secondary-color);
     font-size: 1.3rem;
@@ -133,9 +155,53 @@ video{
 
 /* here we start the css of the show page */
 
-.details{
+
+.details {
     display: grid;
 }
-.program-image{
+
+.program-image {
+    margin: 3rem auto;
+}
+
+.show-title {
+    font-family: var(--first-font-family);
+    letter-spacing: 2px;
+}
+.details-description p{
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    text-align: justify;
+    letter-spacing: 2px;
+    
+}
+.details-seasons {
+    padding: 1rem;
+}
+
+.row-show {
+    margin: 10rem 0 10rem;
+}
+
+.details-seasons h3 {
+    font-size: 2rem;
+    color: var(--first-secondary-color);
+    margin: 0 0.9rem;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.details-seasons ul {
+    width: 100%;
     margin: 0 auto;
+    justify-content: center;
+}
+
+.details-seasons li {
+    padding: 1rem;
+    border-bottom: 1px solid var(--first-secondary-color);
+    width: 100%;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+
 }
