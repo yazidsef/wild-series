@@ -7,9 +7,22 @@
 <div class="details">
     <div class="program-image">
         <img src="{{ asset('build/images/e1.jpg') }}" alt="">
-    </div>
-    <div class="program-details">
-        
+    </div><h2 class="m-auto border border-white">{{program.title}}</h2>
+    <div class="row border border-white justify-content-around">
+        <div class="col-4 details-description border border-white">
+            <p>{{ program.synopsis }}</p>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+        </div>
+        <div class="col-4 details-seasons border border-danger">
+            <h3>Seasons</h3>
+            <ul class="d-grid">
+                <li>Season 1</li>
+                <li>Season 2</li>
+                <li>Season 3</li>
+                <li>Season 4</li>
+            </ul>
+        </div>
     </div>
   </div>
 
