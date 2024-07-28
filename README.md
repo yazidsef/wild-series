@@ -11,3 +11,10 @@
 
 <h2>shéma base de données</h2>
 <img src="public/images/db_wild-series.png">
+
+
+<h2>Wireframe</h2>
+<img src="public/images/wireframe.jpeg">
+<img src="public/images/wireframe1.jpeg">
+<img src="public/images/wireframe2.jpeg">
+
