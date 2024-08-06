@@ -35,7 +35,7 @@ class Episode
     /**
      * @var Collection<int, Comment>
      */
-    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'episode_id')]
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'episodes')]
     private Collection $comments;
 
     public function __construct()
@@ -53,9 +53,9 @@ class Episode
         return $this->season;
     }
 
-    public function setSeasonId(?Season $season_id): static
+    public function setSeasonId(?Season $season): static
     {
-        $this->season = $season_id;
+        $this->season = $season;
 
         return $this;
     }
