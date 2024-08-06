@@ -35,10 +35,10 @@ class Program
     /**
      * @var Collection<int, Season>
      */
-    #[ORM\OneToMany(targetEntity: Season::class, mappedBy: 'program_id', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Season::class, mappedBy: 'program', orphanRemoval: true)]
     private Collection $seasons;
 
-    #[ORM\ManyToOne(inversedBy: 'program_id')]
+    #[ORM\ManyToOne(inversedBy: 'program')]
     private ?ProgramActor $programActor = null;
 
     public function __construct()
