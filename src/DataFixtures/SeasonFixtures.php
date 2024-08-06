@@ -16,9 +16,7 @@ class SeasonFixtures extends Fixture
             $faker = Factory::create('fr_FR');
             $season = new Season();
             $season->setNumber($faker->numberBetween(1, 10));
-            $year = $faker->year;
-            $yearObject = \DateTimeImmutable::createFromFormat('Y-M-D', $year);
-            $season->setYear($yearObject->setDate($yearObject->format('Y-M-D'), $faker->numberBetween(1, 12), $faker->numberBetween(1, 28),));
+            $season->setYear($faker->dateTimeThisYear());
             $season->setDescription($faker->text);
             $season->setProramId($this->getReference('program_'.rand(0,9)));
             $manager->persist($season);

@@ -18,8 +18,8 @@ class EpisodesFixtures extends Fixture
             $episode->setTitle($faker->sentence);
             $episode->setNumber($faker->numberBetween(1, 10));
             $episode->setSynonpsis($faker->text);
-            $seasonReference = 'season_' . $faker->numberBetween(1, 10);
-            $episode->setSeasonId($this->getReference($seasonReference));
+            // $seasonReference = 'season_' . $faker->numberBetween(1, 10);
+            // $episode->setSeasonId($this->getReference($seasonReference));
             $manager->persist($episode);
         }
 

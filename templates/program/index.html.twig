@@ -3,68 +3,72 @@
 {% block title %}WILD SERIES{% endblock %}
 
 {% block body %}
-    <header>
-         <video autoplay muted loop id="bg-video">
-            <source src="{{ asset('build/images/4761738-uhd_4096_2160_25fps.mp4') }}" type="video/mp4">
+<header>
+  <video autoplay muted loop id="bg-video">
+    <source src="{{ asset('build/images/4761738-uhd_4096_2160_25fps.mp4') }}" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="header-title">
+    <h1>THE LAST ROUND </h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veniam laudantium dolores. Libero, facere
+      possimus exercitationem consequuntur ea quasi. Nostrum?</p>
+  </div>
+
+</header>
+<section class="most-watched" style="margin:0">
+  <div class="container text-center">
+    <div class="row program-cards ">
+
+
+      {% for program in programs %}
+      <div class="col  d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+          <a href="{{path('program_new' , {id:program.id})}}">
+            <img src="{{ asset('build/images/e1.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h2 class="text-black">Je suis qu'un thug</h2>
+              <p class="card-text text-black description">{{program.synopsis}}</p>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% if loop.index == 8 %}
+      <div class="col john-wick">
+        <img src="{{asset('build/images/johnwick.png')}}" alt="">
+        <h3 class="johnwick-title">JOHN WICK</h3>
+        <p class="johnwick-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eum expedita enim
+          facilis neque molestiae quasi facere qui temporibus error. Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Dignissimos quaerat nulla quia neque reiciendis ex tempora sapiente esse aliquid odio.</p>
+      </div>
+      {% endif %}
+      {% if loop.index == 19%}
+      <div class="col">
+        <a href="">
+          <video autoplay muted loop id="bg-video">
+            <source src="{{ asset('build/images/village.mp4') }}" type="video/mp4">
             Your browser does not support HTML5 video.
           </video>
-            <div class="header-title">
-                <h1>THE LAST ROUND </h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veniam laudantium dolores. Libero, facere possimus exercitationem consequuntur ea quasi. Nostrum?</p>
-            </div>
-            
-    </header>
-    <section class="most-watched" style="margin:0">
-        <div class="container text-center">
-          <div class="row program-cards ">
+          <h3 class="village-title">LE PETIT VILLAGE</h3>
+          <p class="village-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat et tenetur adipisci
+            distinctio totam impedit, atque ducimus eaque earum quia.</p>
+        </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {{ knp_pagination_render(programs) }}
+
+</section>
 
 
-            {% for program in programs %}
-            <div class="col  d-flex justify-content-center">   
-              <div class="card" style="width: 18rem;">
-                <a href="{{path('program_new' , {id:program.id})}}">
-                  <img src="{{ asset('build/images/e1.jpg') }}" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h2 class="text-black">title</h2>
-                    <p class="card-text text-black description">{{program.synopsis}}</p>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                </a>
-              </div>
-            </div>
-            {% if loop.index == 8 %}
-            <div class="col john-wick">
-              <img src="{{asset('build/images/johnwick.png')}}" alt="">
-              <h3 class="johnwick-title">JOHN WICK</h3>
-              <p class="johnwick-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eum expedita enim facilis neque molestiae quasi facere qui temporibus error. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos quaerat nulla quia neque reiciendis ex tempora sapiente esse aliquid odio.</p>
-            </div>
-            {% endif %}
-            {% if loop.index == 19%}
-            <div class="col">
-              <a href="">
-              <video autoplay muted loop id="bg-video">
-                <source src="{{ asset('build/images/village.mp4') }}" type="video/mp4">
-                Your browser does not support HTML5 video.
-              </video>
-              <h3 class="village-title">LE PETIT VILLAGE</h3>
-              <p class="village-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat et tenetur adipisci distinctio totam impedit, atque ducimus eaque earum quia.</p>
-              </a>
-              </div> 
-            {% endif %}
-            {% endfor %}
-          </div>
-        </div>
-            {{ knp_pagination_render(programs) }}
-
-    </section>
- 
-    
-    <br>
-    <br>
-    <br>
+<br>
+<br>
+<br>
 
 {% endblock %}
