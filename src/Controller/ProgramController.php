@@ -32,13 +32,11 @@ class ProgramController extends AbstractController
 
     //methode show pour affichier les details d'un programme
     #[Route('/{id}',name:'new' , requirements: ['id' => '\d+'])]
-    public function show(int $id , Program $program, SeasonRepository $seasonRepository):Response
+    public function show(int $id , Program $program):Response
     {
-        $seasonRepository = $seasonRepository->findAll();
 
         return $this->render('program/show.html.twig',[
             'program'=>$program,
-            'seasons'=>$seasonRepository
         ]);
     }
 
