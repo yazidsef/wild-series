@@ -45,14 +45,14 @@ class ProgramController extends AbstractController
     public function showSeason( Season $season , Program $program):Response
     {
         return $this->render('season/show.html.twig',[
-            'season'=>$season,
+            'seasons'=>$season,
             'program'=>$program
         ]);
     }
 
     //methode showEpisode pour afficher les details d'un episode
-    #[Route('//{id}/season/{season}/episode/{episode}',name:'episode_show' , requirements: ['id' => '\d+'])]
-    public function showEpisode(int $id , Program $program ,Season $season , Episode $episode):Response
+    #[Route('/{program}/season/{season}/episode/{episode}',name:'episode_show' , requirements: ['program' => '\d+'])]
+    public function showEpisode( Program $program ,Season $season , Episode $episode):Response
     {
         return $this->render('episode/show.html.twig',[
             'program'=>$program,
