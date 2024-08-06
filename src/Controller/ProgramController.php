@@ -6,6 +6,7 @@ use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Repository\ProgramRepository;
+use App\Repository\SeasonRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,10 +32,13 @@ class ProgramController extends AbstractController
 
     //methode show pour affichier les details d'un programme
     #[Route('/{id}',name:'new' , requirements: ['id' => '\d+'])]
-    public function show(int $id , Program $program):Response
+    public function show(int $id , Program $program, SeasonRepository $seasonRepository):Response
     {
+        $seasonRepository = $seasonRepository->findAll();
+
         return $this->render('program/show.html.twig',[
-            'program'=>$program
+            'program'=>$program,
+            'seasons'=>$seasonRepository
         ]);
     }
 

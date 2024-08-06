@@ -35,7 +35,7 @@ class Program
     /**
      * @var Collection<int, Season>
      */
-    #[ORM\OneToMany(targetEntity: Season::class, mappedBy: 'proram_id', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Season::class, mappedBy: 'program_id', orphanRemoval: true)]
     private Collection $seasons;
 
     #[ORM\ManyToOne(inversedBy: 'program_id')]
@@ -123,7 +123,7 @@ class Program
     {
         if (!$this->seasons->contains($season)) {
             $this->seasons->add($season);
-            $season->setProramId($this);
+            $season->setprogramId($this);
         }
 
         return $this;
@@ -133,8 +133,8 @@ class Program
     {
         if ($this->seasons->removeElement($season)) {
             // set the owning side to null (unless already changed)
-            if ($season->getProramId() === $this) {
-                $season->setProramId(null);
+            if ($season->getprogramId() === $this) {
+                $season->setprogramId(null);
             }
         }
 
