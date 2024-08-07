@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SeasonRepository::class)]
 class Season
@@ -17,22 +18,26 @@ class Season
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'seasons')]
+    #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Program $program = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
     private ?int $number = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $year = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
     private ?string $description = null;
 
     /**
      * @var Collection<int, Episode>
      */
     #[ORM\OneToMany(targetEntity: Episode::class, mappedBy: 'season', orphanRemoval: true)]
+    #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
     private Collection $episodes;
 
     public function __construct()

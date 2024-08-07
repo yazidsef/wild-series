@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProgramRepository::class)]
 class Program
@@ -17,19 +18,27 @@ class Program
     private ?int $id = null;
 
     #[ORM\Column(length: 150)]
+    #[Assert\NotBlank(message: 'Ne laissez pas ce champ vide')]
+    #[Assert\Unique(message: 'Ce nom de program existe déjà')]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
+
     private ?string $synopsis = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
+
     private ?string $poster = null;
 
     #[ORM\Column(length: 150)]
+    #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
     private ?string $country = null;
 
     #[ORM\ManyToOne(inversedBy: 'programs')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
     private ?Category $category = null;
 
     /**
