@@ -16,10 +16,8 @@ class Category
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 150)]
-    #[Assert\NotBlank(message: 'vous devez ajouter le nom de category')]
-    #[Assert\Unique(message: 'Ce nom de catégorie existe déjà')]
-    #[Assert\Length(max: 255)]
+    #[ORM\Column(type: 'string', length: 150, unique: true)]
+    #[Assert\NotBlank(message: 'Ne laissez pas ce champ vide')]
     private ?string $name = null;
 
     /**

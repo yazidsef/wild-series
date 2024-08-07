@@ -24,7 +24,8 @@ class Program
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
-
+    //on peut pas ajouter plus belle la vie 
+    #[Assert\NotEqualTo(value: 'plus belle la vie', message: 'On parle de vraies séries')]
     private ?string $synopsis = null;
 
     #[ORM\Column(length: 255)]

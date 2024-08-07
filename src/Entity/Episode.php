@@ -22,7 +22,6 @@ class Episode
     private ?Season $season = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Unique(message: 'Ce nom de cette episode existe déjà')]
     #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
     private ?string $title = null;
 
