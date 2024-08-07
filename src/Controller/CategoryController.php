@@ -32,7 +32,7 @@ class CategoryController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $manager->persist($category);
             $manager->flush();
-            $this->redirectToRoute('category_index');
+            $this->redirectToRoute('category_new');
         }
         return $this->render('category/new.html.twig', [
             'form'=>$form
