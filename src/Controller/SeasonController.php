@@ -75,7 +75,7 @@ class SeasonController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$season->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($season);
             $entityManager->flush();
-            $this->addFlash('success','la saison a été bien supprimé ');
+            $this->addFlash('danger','la saison a été bien supprimé ');
 
         }
 

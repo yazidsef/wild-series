@@ -75,7 +75,7 @@ class EpisodeController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$episode->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($episode);
             $entityManager->flush();
-            $this->addFlash('success','l\'épisode a été bien supprimé ');
+            $this->addFlash('danger','l\'épisode a été bien supprimé ');
 
         }
 
