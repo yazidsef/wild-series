@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+	<div class="details">
+		<div class="program-image">
+			<img src="{{ asset('build/images/e1.jpg') }}" alt="">
+		</div>
+
+		<!-- title of the movie -->
+		<h2 class="m-auto show-title">{{seasons.number}}</h2>
+
+		<!-- details of the movie -->
+		<div class="row row-show justify-content-around">
+			<div class="col-5 details-description ">
+				<h2 class="text-center">Histoire</h2>
+				<p>{{ seasons.description }}
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam eum possimus nisi quae quasi recusandae
+				</p>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star"></span>
+			</div>
+			<div class="col-4 details-seasons ">
+				<h3>Episodes</h3>
+				<ul class="d-grid">
+					{% for episode in seasons.episodes %}
+						<li>
+							 <a href="{{path('program_episode_show', {'season':seasons.id , 'program' : program.id , 'episode':episode.id})}}">Season
+								
+								{{episode.title}}
+								{{episode.number}}
+							 </a>
+						</li>
+					{% endfor %}
+
+
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}
