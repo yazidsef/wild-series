@@ -19,7 +19,6 @@ class Program
 
     #[ORM\Column(length: 150)]
     #[Assert\NotBlank(message: 'Ne laissez pas ce champ vide')]
-    #[Assert\Unique(message: 'Ce nom de program existe déjà')]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
