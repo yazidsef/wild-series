@@ -18,7 +18,7 @@ class SeasonFixtures extends Fixture
             $season->setNumber($faker->numberBetween(1, 10));
             $season->setYear($faker->dateTimeThisYear());
             $season->setDescription($faker->text);
-            $season->setprogramId($this->getReference('program_'.rand(0,9)));
+            $season->setprogram($this->getReference('program_'.rand(0,9)));
             $manager->persist($season);
         }
 
