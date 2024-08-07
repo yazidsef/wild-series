@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ActorRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +24,17 @@ class Actor
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $birth_date = null;
+
+    /**
+     * @var Collection<int, Program>
+     */
+    #[ORM\ManyToMany(targetEntity: Program::class, inversedBy: 'actors')]
+    private Collection $Programs;
+
+    public function __construct()
+    {
+        $this->Programs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +73,30 @@ class Actor
     public function setBirthDate(\DateTimeInterface $birth_date): static
     {
         $this->birth_date = $birth_date;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Program>
+     */
+    public function getPrograms(): Collection
+    {
+        return $this->Programs;
+    }
+
+    public function addProgram(Program $program): static
+    {
+        if (!$this->Programs->contains($program)) {
+            $this->Programs->add($program);
+        }
+
+        return $this;
+    }
+
+    public function removeProgram(Program $program): static
+    {
+        $this->Programs->removeElement($program);
 
         return $this;
     }
