@@ -123,7 +123,7 @@ class Program
     {
         if (!$this->seasons->contains($season)) {
             $this->seasons->add($season);
-            $season->setprogramId($this);
+            $season->setprogram($this);
         }
 
         return $this;
@@ -133,8 +133,8 @@ class Program
     {
         if ($this->seasons->removeElement($season)) {
             // set the owning side to null (unless already changed)
-            if ($season->getprogramId() === $this) {
-                $season->setprogramId(null);
+            if ($season->getprogram() === $this) {
+                $season->setprogram(null);
             }
         }
 
