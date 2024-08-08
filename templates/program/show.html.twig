@@ -33,7 +33,7 @@
 				<ul class="d-grid">
 					{% for season in program.seasons %}
 						<li>
-							<a href="{{path('program_season_show', {'season':season.id , 'program' : program.id})}}">Season
+							<a href="{{path('program_season_show', {'season':season.id , 'program' : program.slug})}}">Season
 								{{ season.number }}</a>
 						</li>
 					{% endfor %}

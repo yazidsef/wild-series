@@ -55,8 +55,8 @@ class ProgramController extends AbstractController
     }
 
     //methode show pour affichier les details d'un programme
-    #[Route('/{slug}',name:'new')]
-    public function show(Program $program , SluggerInterface $slugger):Response
+    #[Route('/{slug}',name:'show')]
+    public function show(Program $program):Response
     {
         return $this->render('program/show.html.twig',[
             'program'=>$program,
@@ -66,21 +66,21 @@ class ProgramController extends AbstractController
 
 
     //methode showSeason pour afficher les details d'une saison
-    #[Route('/{program}/season/{season}',name:'season_show' , requirements: ['id' => '\d+'])]
-    public function showSeason( Season $season , Program $program , EpisodeRepository $episodes):Response
+    #[Route('/{program}/season/{season}',name:'season_show' , requirements: ['season' => '\d+'])]
+    public function showSeason( Season $season , string $program ,ProgramRepository $programRepository):Response
     {
-        $test = $season->getEpisodes();
+        $program = $programRepository->findOneBy(['slug'=>$program]);
         return $this->render('season/show.html.twig',[
             'seasons'=>$season,
             'program'=>$program,
-            'test'=>$test
         ]);
     }
 
     //methode showEpisode pour afficher les details d'un episode
-    #[Route('/{program}/season/{season}/episode/{slug}',name:'episode_show' , requirements: ['program' => '\d+'])]
-    public function showEpisode( Program $program ,Season $season , Episode $episode):Response
+    #[Route('/{program}/season/{season}/episode/{slug}',name:'episode_show')]
+    public function showEpisode( string $program ,Episode $episode ,Season $season , ProgramRepository $programRepository):Response
     {
+        $program = $programRepository->findOneBy(['slug'=>$program]);
         return $this->render('episode/show.html.twig',[
             'program'=>$program,
             'seasons'=>$season,
