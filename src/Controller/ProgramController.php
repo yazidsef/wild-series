@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/', name: 'program_')]
 class ProgramController extends AbstractController
@@ -54,10 +55,11 @@ class ProgramController extends AbstractController
     }
 
     //methode show pour affichier les details d'un programme
-    #[Route('/{id}',name:'new' , requirements: ['id' => '\d+'])]
-    public function show(Program $program):Response
+    #[Route('/{slug}',name:'new')]
+    public function show(Program $program , SluggerInterface $slugger):Response
     {
-
+        $slug = $slugger->slug($program->getTitle());
+        $program->setSlug($slug);
         return $this->render('program/show.html.twig',[
             'program'=>$program,
         ]);

@@ -17,7 +17,7 @@ class ActorFixutures extends Fixture
           
            $actor->setFirstname($faker->firstName());
            $actor->setLastname($faker->firstName());
-           $actor->getBirthDate($faker->date());
+           $actor->setBirthDate($faker->dateTimeThisYear());
            $manager->persist($actor);
         }
 
