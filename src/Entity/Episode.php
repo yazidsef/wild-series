@@ -45,6 +45,9 @@ class Episode
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    #[ORM\Column(length: 150)]
+    private ?string $duration = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -153,6 +156,18 @@ class Episode
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getDuration(): ?string
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(string $duration): static
+    {
+        $this->duration = $duration;
 
         return $this;
     }
