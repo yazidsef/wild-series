@@ -26,7 +26,7 @@
 				<ul class="d-grid">
 					{% for episode in seasons.episodes %}
 						<li>
-							<a href="{{path('program_episode_show', {'season':seasons.id , 'program' : program.id , 'episode':episode.id})}}">Season
+							<a href="{{path('program_episode_show', {'season':seasons.id , 'program' : program.id , 'episode':episode.slug})}}">Season
 
 								{{episode.title}}
 								{{episode.number}}

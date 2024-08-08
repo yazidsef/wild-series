@@ -58,8 +58,6 @@ class ProgramController extends AbstractController
     #[Route('/{slug}',name:'new')]
     public function show(Program $program , SluggerInterface $slugger):Response
     {
-        $slug = $slugger->slug($program->getTitle());
-        $program->setSlug($slug);
         return $this->render('program/show.html.twig',[
             'program'=>$program,
         ]);
@@ -80,7 +78,7 @@ class ProgramController extends AbstractController
     }
 
     //methode showEpisode pour afficher les details d'un episode
-    #[Route('/{program}/season/{season}/episode/{episode}',name:'episode_show' , requirements: ['program' => '\d+'])]
+    #[Route('/{program}/season/{season}/episode/{slug}',name:'episode_show' , requirements: ['program' => '\d+'])]
     public function showEpisode( Program $program ,Season $season , Episode $episode):Response
     {
         return $this->render('episode/show.html.twig',[
