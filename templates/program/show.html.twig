@@ -10,14 +10,21 @@
 
 		<!-- title of the movie -->
 		<h2 class="m-auto show-title">{{program.title}}</h2>
+		<h3 class="m-auto show-category">Acteurs</h3>
+		{% for actor in program.actors %}
+			<li>{{ actor.firstname }}
+				{{ actor.lastname }}</li>
+		{% else %}
+			<li>Aucun acteur pour cette série</li>
+		{% endfor %}
 
 		<!-- details of the movie -->
 		<div class="row row-show justify-content-around">
 			<div class="col-5 details-description ">
-				<h2 class="text-center">Histoire</h2>
+				<h3 class="text-center">Histoire</h2>
 				<p>{{ program.synopsis }}
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam eum possimus nisi quae quasi recusandae
-																																		rerum, provident aut quisquam numquam esse et incidunt, ad quidem, amet ipsa ea asperiores! Maiores?
+																																																											rerum, provident aut quisquam numquam esse et incidunt, ad quidem, amet ipsa ea asperiores! Maiores?
 				</p>
 				<span class="fa fa-star checked"></span>
 				<span class="fa fa-star"></span>

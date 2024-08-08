@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Program;
-use App\Entity\ProgramActor;
+use App\Entity\Actor;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,10 +23,13 @@ class ProgramType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'id',
             ])
-            ->add('programActor', EntityType::class, [
-                'class' => ProgramActor::class,
-                'choice_label' => 'id',
+            ->add('actors', EntityType::class, [
+                'class' => Actor::class,
+                'choice_label' => 'firstname',
+                'multiple' => true,
+                'expanded'=>true
             ])
+
         ;
     }
 

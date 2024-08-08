@@ -23,7 +23,7 @@ class Actor
     private ?string $lastname = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeImmutable $birth_date = null;
+    private ?\DateTimeInterface $birth_date = null;
 
     /**
      * @var Collection<int, Program>
@@ -65,12 +65,12 @@ class Actor
         return $this;
     }
 
-    public function getBirthDate(): ?\DateTimeImmutable
+    public function getBirthDate(): ?\DateTimeInterface
     {
         return $this->birth_date;
     }
 
-    public function setBirthDate(\DateTimeImmutable $birth_date): static
+    public function setBirthDate(\DateTimeInterface $birth_date): static
     {
         $this->birth_date = $birth_date;
 
