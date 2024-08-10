@@ -14,12 +14,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Service\ProgramDuration;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 #[Route('/', name: 'program_')]
 class ProgramController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(Request $request,ProgramRepository $programRepository , PaginatorInterface $paginator , ProgramDuration $programDuration ): Response
+    public function index(Request $request,ProgramRepository $programRepository , PaginatorInterface $paginator , ProgramDuration $programDuration): Response
     {
         $test= new Program();
         $program = $programRepository->findAll();
@@ -74,7 +76,7 @@ class ProgramController extends AbstractController
     // ---- methode new pour ajouter un nouveau programme ----
 
     #[Route('new', name: 'add_new')]
-    public function new(Request $request , EntityManagerInterface $manager):Response
+    public function new(Request $request , EntityManagerInterface $manager , MailerInterface $mailer):Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
@@ -83,6 +85,12 @@ class ProgramController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $manager->persist($program);
             $manager->flush();
+            $email = (new Email())
+            ->from('yazidsefsaf45@yahoo.com')
+            ->to('yazidsefs20@yahoo.com')
+            ->subject('un nouveau program a été ajouter')
+            ->html('<p> Une nouvelle serie vient d\'etre publiée sur wild series </p>');
+            $mailer->send($email);
             $this->addFlash('success','un nouveau program a été ajouter ');
             return $this->redirectToRoute('program_add_new');
         }
