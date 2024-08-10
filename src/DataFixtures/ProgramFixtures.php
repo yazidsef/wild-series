@@ -26,6 +26,7 @@ class ProgramFixtures extends Fixture
             $program->setCategory($this->getReference('category_'.rand(0,9)));
             $program->setCountry($faker->country);
             $program->setSlug($this->slugger->slug($program->getTitle()));
+            $program->setSlug($this->slugger->slug($program->getTitle()));
             $this->addReference('program_'.$i, $program);
             $manager->persist($program);
         }
