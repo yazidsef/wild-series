@@ -19,6 +19,11 @@ class ProgramType extends AbstractType
             ->add('synopsis')
             ->add('poster')
             ->add('country')
+            ->add('posterFile', VichFileType::class, [
+                     'required' => false,
+                     'allow_delete' => true, // not mandatory, default is true
+                     'download_uri' => true, // not mandatory, default is true
+                   ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'id',
