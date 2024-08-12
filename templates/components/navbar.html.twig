@@ -15,7 +15,15 @@
 		<ul>
 			<li><a href="{{path('program_index')}}">Home</a></li>
 			<li><a href="{{path('category_index')}}">Categories</a></li>
-			<li><a href="{{path('app_login')}}">Connexion</a></li>
+			<li>
+			{% if app.user %}
+				{{ app.user.email }}
+				<a href="{{ path('app_logout') }}"> Se déconnecter</a>
+				{% else %}
+				<a href="{{ path('app_login') }}"> Se connecter</a>
+			{% endif %}
+			
+			</li>
 		</ul>
 	</div> 
 </nav>
