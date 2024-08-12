@@ -13,10 +13,7 @@ class Comment
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\ManyToOne(inversedBy: 'comments')]
-    private ?User $user_id = null;
-
+    
     #[ORM\ManyToOne(inversedBy: 'comments')]
     private ?Episode $episode_id = null;
 
@@ -31,17 +28,6 @@ class Comment
         return $this->id;
     }
 
-    public function getUserId(): ?User
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(?User $user_id): static
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
 
     public function getEpisodeId(): ?Episode
     {
