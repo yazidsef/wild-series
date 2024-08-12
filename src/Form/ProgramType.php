@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ProgramType extends AbstractType
 {
@@ -17,7 +18,6 @@ class ProgramType extends AbstractType
         $builder
             ->add('title')
             ->add('synopsis')
-            ->add('poster')
             ->add('country')
             ->add('posterFile', VichFileType::class, [
                      'required' => false,
