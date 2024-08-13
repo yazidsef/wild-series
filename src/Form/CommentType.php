@@ -7,6 +7,7 @@ use App\Entity\Episode;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +17,10 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('comment')
-            ->add('rate');
+            ->add('rate', HiddenType::class, [
+                'attr' => ['class' => 'rating-input'],
+                'label' => false, // Optional: hide label as we'll use stars
+            ]);
        
     }
 

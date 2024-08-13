@@ -1,0 +1,24 @@
+textarea {
+    width: 100%;
+    border-radius: 0.7rem;
+}
+
+.star {
+    font-size: 2rem;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.star.selected {
+    color: var(--second-secondary-color);
+}
+
+.star {
+    font-size: 1.5rem;
+    color: gray;
+}
+
+.star.filled {
+    color: gold;
+}
