@@ -39,7 +39,7 @@ class Episode
     /**
      * @var Collection<int, Comment>
      */
-    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'episodes')]
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'episode')]
     private Collection $comments;
 
     #[ORM\Column(length: 255)]

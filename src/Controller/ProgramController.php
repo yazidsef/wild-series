@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
+use App\Form\CommentType;
 use App\Form\ProgramType;
 use App\Repository\ProgramRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -89,13 +90,29 @@ class ProgramController extends AbstractController
 
     //methode showEpisode pour afficher les details d'un episode
     #[Route('/{program}/season/{season}/episode/{slug}',name:'episode_show')]
-    public function showEpisode( string $program ,Episode $episode ,Season $season , ProgramRepository $programRepository):Response
+    public function showEpisode( string $program ,Episode $episode ,Season $season , ProgramRepository $programRepository ,
+     Request $request , EntityManagerInterface $entityManager):Response
     {
+        $form = $this->createForm(CommentType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment = $form->getData();
+            $comment->setAuthor($this->getUser());
+            $comment->setEpisode($episode);
+
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            // Redirect or return a re
+            $this->addFlash('success','Commentaire ajouté avec succès');
+            return $this->redirectToRoute('program_episode_show', ['program'=>$program,'season'=>$season->getId(),'slug'=>$episode->getSlug()]);
+        }
         $program = $programRepository->findOneBy(['slug'=>$program]);
         return $this->render('episode/show.html.twig',[
             'program'=>$program,
             'seasons'=>$season,
-            'episode'=>$episode
+            'episode'=>$episode,
+            'form'=>$form->createView(),
         ]);
     }
 

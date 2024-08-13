@@ -16,16 +16,8 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('comment')
-            ->add('rate')
-            ->add('episode', EntityType::class, [
-                'class' => Episode::class,
-'choice_label' => 'id',
-            ])
-            ->add('author', EntityType::class, [
-                'class' => User::class,
-'choice_label' => 'id',
-            ])
-        ;
+            ->add('rate');
+       
     }
 
     public function configureOptions(OptionsResolver $resolver): void

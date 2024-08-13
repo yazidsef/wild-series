@@ -22,19 +22,22 @@
 				<span class="fa fa-star"></span>
 			</div>
 			<div class="col-4 details-seasons ">
-				<h3>informatios</h3>
-				<ul
-					class="d-grid">{# {% for episode in seasons.episodes %}{% endfor %}#}
-
+				<h3>Commentaires</h3>
+				<ul class="mb-5">
+					{% for comment in episode.comments %}
+						<li>
+							{{ comment.comment }}
+						</li>
+					{% endfor %}
+					
 				</ul>
+			
 				{% if app.user %}
-					<div class="comment-section">
-						<h3>Ajouter un commentaire</h3>
-						<form action="#" method="POST">
-							<textarea name="comment" rows="4" cols="50"></textarea>
-							<button type="submit">Ajouter</button>
-						</form>
-					</div>
+				 {{ form_start(form) }}
+       			 {{ form_widget(form) }}
+        		<button class="btn">Save</button>
+   				 {{ form_end(form) }}
+
 				{% endif %}
 			</div>
 		</div>
