@@ -39,7 +39,7 @@ class ProgramController extends AbstractController
     }
     // ---- methode new pour ajouter un nouveau programme ----
 
-    #[Route('new', name: 'add_new')]
+    #[Route('program/new', name: 'add_new')]
     public function new(Request $request , EntityManagerInterface $manager , MailerInterface $mailer , SluggerInterface $slugger):Response
     {
         $program = new Program();
@@ -49,6 +49,7 @@ class ProgramController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $program->setSlug($slugger->slug($program->getTitle()));
             $program->setOwner($this->getUser());
+            $program->setPoster('yazidsefsaf');
             $manager->persist($program);
             $manager->flush();
             $email = (new Email())
@@ -62,6 +63,29 @@ class ProgramController extends AbstractController
         }
         return $this->render('program/new.html.twig', [
             'form'=>$form->createView()
+        ]);
+    }
+
+    //methode edit pour modifier un programme
+    #[Route('program/edit/{id}', name:'program_edit')]
+    public function edit(Program $program = null, Request $request, EntityManagerInterface $manager): Response
+    {
+        if (!$program) {
+            throw $this->createNotFoundException('Le programme demandé n\'existe pas.');
+        }
+
+        $form = $this->createForm(ProgramType::class, $program);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->flush();
+            $this->addFlash('success', 'Le programme a été modifié avec succès');
+            return $this->redirectToRoute('program_show', ['slug' => $program->getSlug()]);
+        }
+
+        return $this->render('program/edit.html.twig', [
+            'program' => $program,
+            'form' => $form->createView(),
         ]);
     }
 
