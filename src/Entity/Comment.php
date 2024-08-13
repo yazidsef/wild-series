@@ -15,7 +15,7 @@ class Comment
     private ?int $id = null;
     
     #[ORM\ManyToOne(inversedBy: 'comments')]
-    private ?Episode $episode_id = null;
+    private ?Episode $episode = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $comment = null;
@@ -32,14 +32,14 @@ class Comment
     }
 
 
-    public function getEpisodeId(): ?Episode
+    public function getEpisode(): ?Episode
     {
-        return $this->episode_id;
+        return $this->episode;
     }
 
-    public function setEpisodeId(?Episode $episode_id): static
+    public function setEpisode(?Episode $episode): static
     {
-        $this->episode_id = $episode_id;
+        $this->episode = $episode;
 
         return $this;
     }

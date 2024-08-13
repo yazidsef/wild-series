@@ -26,8 +26,16 @@
 				<ul
 					class="d-grid">{# {% for episode in seasons.episodes %}{% endfor %}#}
 
-
 				</ul>
+				{% if app.user %}
+					<div class="comment-section">
+						<h3>Ajouter un commentaire</h3>
+						<form action="#" method="POST">
+							<textarea name="comment" rows="4" cols="50"></textarea>
+							<button type="submit">Ajouter</button>
+						</form>
+					</div>
+				{% endif %}
 			</div>
 		</div>
 	</div>
