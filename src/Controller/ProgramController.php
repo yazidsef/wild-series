@@ -48,6 +48,7 @@ class ProgramController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
             $program->setSlug($slugger->slug($program->getTitle()));
+            $program->setOwner($this->getUser());
             $manager->persist($program);
             $manager->flush();
             $email = (new Email())

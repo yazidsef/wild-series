@@ -19,6 +19,7 @@ class UserFixtures extends Fixture
         $user = new User();
         $user->setEmail('yazidsefsaf45@yahoo,com');
         $user->setRoles(['ROLE_CONTRIBUTOR']);
+        $this->addReference('user', $user);
         $hashedPassword = $this->passwordHasher->hashPassword(
             $user,
             'password'
@@ -33,6 +34,7 @@ class UserFixtures extends Fixture
             $admin,
             'password'
         );
+        $this->addReference('admin', $admin);
         $admin->setPassword($hashedPassword);
         $manager->persist($admin);
 

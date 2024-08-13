@@ -25,6 +25,7 @@ class ProgramFixtures extends Fixture
             $program->setPoster($faker->name);
             $program->setCategory($this->getReference('category_'.rand(0,9)));
             $program->setCountry($faker->country);
+            $program->setOwner($this->getReference('admin'));
             $program->setSlug($this->slugger->slug($program->getTitle()));
             $program->setSlug($this->slugger->slug($program->getTitle()));
             $this->addReference('program_'.$i, $program);
@@ -36,6 +37,6 @@ class ProgramFixtures extends Fixture
     }
     public function getDependencies()
     {
-        return [CategoryFixtures::class];
+        return [CategoryFixtures::class, UserFixtures::class];
     }
 }
