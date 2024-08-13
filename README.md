@@ -1,4 +1,4 @@
-<h1>Wild series </h1>
+<h1>Wild series with Symfony_6.4 </h1>
 <h2>Les principales caractéristiques et fonctionnalités sont :</h2>
 <ul>
   <li>✔️ Création d’une application web responsive et dynamique</li>
