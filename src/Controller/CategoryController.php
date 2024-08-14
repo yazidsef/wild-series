@@ -9,12 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 
 #[Route('/category', name: 'category_')]
-
 class CategoryController extends AbstractController
 {
     #[Route('/', name: 'index')]
+    
     public function index(): Response
     {
         return $this->render('category/index.html.twig', [
@@ -23,8 +25,10 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/new',name:'new')]
+    #[IsGranted('ROLE_ADMIN')]
     public function new(Request $request ,EntityManagerInterface $manager): Response
     {
+        
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);

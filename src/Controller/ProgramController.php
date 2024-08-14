@@ -67,9 +67,13 @@ class ProgramController extends AbstractController
     }
 
     //methode edit pour modifier un programme
-    #[Route('program/edit/{id}', name:'program_edit')]
+    #[Route('program/edit/{id}', name:'edit')]
     public function edit(Program $program = null, Request $request, EntityManagerInterface $manager): Response
     {
+        if ($this->getUser() !== $program->getOwner()) {
+            // If not the owner, throws a 403 Access Denied exception
+            throw $this->createAccessDeniedException('Only the owner can edit the program!');
+        }    
         if (!$program) {
             throw $this->createNotFoundException('Le programme demandé n\'existe pas.');
         }
