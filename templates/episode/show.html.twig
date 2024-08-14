@@ -38,6 +38,15 @@
         <li>
             <div>
                 {{ comment.comment }}
+				<br>
+				{# chaque utilisateur peut supprimer son propre commentaire #}
+				{% if comment.author.id == app.user.id %}
+					<a href="{{path('comment_delete' , {id:comment.id})}}" class="text-danger"> supprimer mon commentaire </a>
+				{% endif %}
+				{% if is_granted("ROLE_ADMIN") %}
+					<a href="{{path('comment_delete' , {id:comment.id})}}"> supprimer ce commentaire !</a>				
+				{% endif %}
+				
             </div>
             <div>            
                 <span class="stars">
