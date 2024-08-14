@@ -17,7 +17,6 @@
 			<li><a href="{{path('category_index')}}">Categories</a></li>
 			<li>
 			{% if app.user %}
-				{{ app.user.email }}
 				<a href="{{ path('app_logout') }}"> Se déconnecter</a>
 				{% else %}
 				<a href="{{ path('app_login') }}"> Se connecter</a>
