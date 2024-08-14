@@ -34,36 +34,36 @@
 			<div class="col-4 details-seasons ">
 				<h3>Commentaires</h3>
 				<ul class="mb-5">
-    {% for comment in episode.comments %}
-        <li>
-            <div>
-                {{ comment.comment }}
-				<br>
-				{# chaque utilisateur peut supprimer son propre commentaire #}
-				{% if comment.author.id == app.user.id %}
-					<a href="{{path('comment_delete' , {id:comment.id})}}" class="text-danger"> supprimer mon commentaire </a>
-				{% endif %}
+					{% for comment in episode.comments %}
+						<li>
+							<div>
+								{{ comment.comment }}
+								<br>
+								{# chaque utilisateur peut supprimer son propre commentaire #}
+								{% if comment.author.id == app.user.id %}
+									<a href="{{path('comment_delete' , {id:comment.id})}}" class="text-danger"> supprimer mon commentaire </a>
+								{% endif %}
 
-				{# l'admin peut supprimer n'importe quel commentaire  #}
-				{% if is_granted("ROLE_ADMIN") %}
-					<a href="{{path('comment_delete' , {id:comment.id})}}"> supprimer ce commentaire !</a>				
-				{% endif %}
-				
-            </div>
-            <div>            
-                <span class="stars">
-                    {% for i in 1..5 %}
-                        {% if i <= comment.rate %}
-                            <span class="star filled">&#9733;</span> {# étoile remplie #}
-                        {% else %}
-                            <span class="star">&#9733;</span> {# étoile vide #}
-                        {% endif %}
-                    {% endfor %}
-                </span>
-            </div>
-        </li>
-    {% endfor %}
-</ul>
+								{# l'admin peut supprimer n'importe quel commentaire  #}
+								{% if is_granted("ROLE_ADMIN") %}
+									<a href="{{path('comment_delete' , {id:comment.id})}}"> supprimer ce commentaire !</a>				
+								{% endif %}
+								
+							</div>
+							<div>            
+								<span class="stars">
+									{% for i in 1..5 %}
+										{% if i <= comment.rate %}
+											<span class="star filled">&#9733;</span> {# étoile remplie #}
+										{% else %}
+											<span class="star">&#9733;</span> {# étoile vide #}
+										{% endif %}
+									{% endfor %}
+								</span>
+							</div>
+						</li>
+					{% endfor %}
+				</ul>
 
 			{# affichage de formulaire de commentaire si un utilisateur est connecté #}
 				{% if app.user %}
