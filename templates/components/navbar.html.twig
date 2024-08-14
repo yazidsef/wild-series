@@ -6,9 +6,10 @@
 	</div>
 
 	<div>
-		<form action="#">
-			<input type="search" placeholder="search">
-		</form>
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<button>Search</button>
+		{{ form_end(form) }}
 	</div>
 
 	<div>

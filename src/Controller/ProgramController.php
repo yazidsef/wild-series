@@ -7,6 +7,7 @@ use App\Entity\Program;
 use App\Entity\Season;
 use App\Form\CommentType;
 use App\Form\ProgramType;
+use App\Form\SearchProgramType;
 use App\Repository\ProgramRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -25,16 +26,25 @@ class ProgramController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(Request $request,ProgramRepository $programRepository , PaginatorInterface $paginator , ProgramDuration $programDuration): Response
     {
-        $test= new Program();
-        $program = $programRepository->findAll();
+        $form = $this->createForm(SearchProgramType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $search = $form->getData()['search'];
+            $program = $programRepository->findBy(['title'=>$search]);
+        }else{
+            $program = $programRepository->findAll();
+        }
         $program = $paginator->paginate(
             $program,
             $request->query->getInt('page', 1),
             24
         );
+        //$test = 'uazd';
         return $this->render('program/index.html.twig', [
             'programs' => $program,
-            'programDuration'=>$programDuration->calculate($test)
+            'form'=> $form,
+            //'programDuration'=>$programDuration->calculate($test)
         ]);
     }
     // ---- methode new pour ajouter un nouveau programme ----
