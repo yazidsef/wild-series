@@ -43,6 +43,8 @@
 				{% if comment.author.id == app.user.id %}
 					<a href="{{path('comment_delete' , {id:comment.id})}}" class="text-danger"> supprimer mon commentaire </a>
 				{% endif %}
+
+				{# l'admin peut supprimer n'importe quel commentaire  #}
 				{% if is_granted("ROLE_ADMIN") %}
 					<a href="{{path('comment_delete' , {id:comment.id})}}"> supprimer ce commentaire !</a>				
 				{% endif %}
@@ -63,7 +65,7 @@
     {% endfor %}
 </ul>
 
-			
+			{# affichage de formulaire de commentaire si un utilisateur est connecté #}
 				{% if app.user %}
        			{{ form_start(form) }}
 
