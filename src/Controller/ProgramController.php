@@ -24,14 +24,14 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ProgramController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(Request $request,ProgramRepository $programRepository , PaginatorInterface $paginator , ProgramDuration $programDuration): Response
+    public function index(Request $request,ProgramRepository $programRepository , PaginatorInterface $paginator): Response
     {
         $form = $this->createForm(SearchProgramType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
             $search = $form->getData()['search'];
-            $program = $programRepository->findBy(['title'=>$search]);
+            $program = $programRepository->findLikeName($search);
         }else{
             $program = $programRepository->findAll();
         }
