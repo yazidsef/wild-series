@@ -12,14 +12,19 @@ class SearchProgramType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('search', SearchType::class)
+        ->add('search', SearchType::class, [
+            'required' => false,
+            'attr' => [
+                'placeholder' => 'Rechercher un programme...',
+            ],
+        ]);
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'csrf_protection' => true,
         ]);
     }
 }
