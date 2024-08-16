@@ -4,7 +4,8 @@
 {% endblock %}
 {% block body %}
 
-	
+	<body data-controller="hello">je suis un thug</body>
+	<body {{ stimulus_controller('hello') }}>...</body>
 	<div class="details">
 		<div class="program-image">
 			<img src="{{ asset('build/images/e1.jpg') }}" alt="">
