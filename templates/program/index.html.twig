@@ -1,12 +1,7 @@
 {% extends 'base.html.twig' %} {% block title %}WILD SERIES {% endblock %} 
 {% block body %}
 <header>
-<div {{ stimulus_controller('theme')}}>
-    <!-- some content -->
-    <button {{ stimulus_action('theme', 'toggleDarkMode')}}>
-        clic me
-    </button>
-</div>
+
   <video autoplay muted loop id="bg-video">
     <source
       src="{{ asset('build/images/4761738-uhd_4096_2160_25fps.mp4') }}"
