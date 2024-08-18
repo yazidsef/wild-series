@@ -7,9 +7,11 @@ use App\Entity\Program;
 use App\Entity\Actor;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
+use Symfony\Component\HttpFoundation\File\File; 
 
 class ProgramType extends AbstractType
 {
@@ -33,6 +35,11 @@ class ProgramType extends AbstractType
                 'choice_label' => 'firstname',
                 'multiple' => true,
                 'expanded'=>true
+            ])
+            ->add('poster', FileType::class, [
+                'label' => 'Product Image',
+                'mapped' => true,
+                'required' => false
             ])
 
         ;
