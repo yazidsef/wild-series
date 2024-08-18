@@ -26,12 +26,12 @@
         <div class="card" style="width: 18rem">
           <a href="{{ path('program_show', { slug: program.slug }) }}">
             <img
-              src="{{ asset('build/images/e1.jpg') }}"
-              class="card-img-top"
-              alt="..."
+              src="{{ asset('uploads/images/posters/' ~ program.poster) }}"
+              class="card-img-top image-height"
+              alt="{{ program.title }}"
             />
             <div class="card-body">
-              <h2 class="text-black">
+              <h2 class="text-black card-title">
                 {{ program.title }}
               </h2>
               <p class="card-text text-black description">

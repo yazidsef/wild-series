@@ -23,7 +23,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program = new Program();
             $program->setTitle($faker->lastName());
             $program->setSynopsis($faker->text);
-            $program->setPoster($faker->name);
+            $program->setPoster(rand(9,19).'.png');
             $program->setCategory($this->getReference('category_'.rand(0,9)));
             $program->setCountry($faker->country);
             $program->setOwner($this->getReference('admin'));

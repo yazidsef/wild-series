@@ -5,7 +5,11 @@
 {% block body %}
 	<div class="details">
 		<div class="program-image">
-			<img src="{{ asset('build/images/e1.jpg') }}" alt="">
+			<img
+              src="{{ asset('uploads/images/posters/' ~ program.poster) }}"
+              class="card-img-top image-height"
+              alt="{{ program.title }}"
+            />
 		</div>
 		{% if is_granted("ROLE_ADMIN") %}
 			  <a href="{{ path('program_edit', { 'id': program.id} ) }}" class="p-3 text-center  alert alert-danger">Éditer</a>

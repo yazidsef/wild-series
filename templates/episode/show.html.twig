@@ -15,7 +15,11 @@
 
 	<div class="details">
 		<div class="program-image">
-			<img src="{{ asset('build/images/e1.jpg') }}" alt="">
+			<img
+              src="{{ asset('uploads/images/posters/' ~ program.poster) }}"
+              class="card-img-top image-height"
+              alt="{{ program.title }}"
+            />
 		</div>
 
 		<!-- title of the movie -->

@@ -31,9 +31,7 @@ class Program
     private ?string $synopsis = null;
 
     //poster pour stocker le nom du fichier
-    #[ORM\Column(length: 255)]
-    #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
-
+    #[ORM\Column(length: 255 , nullable: true)]
     private ?string $poster = null;
 
     //on ajoute cette propriété pour stocker le fichier
