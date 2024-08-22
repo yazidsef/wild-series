@@ -11,7 +11,7 @@
         {% for category in this.categories %}
             <li>
                 <a
-                        class="dropdown-item"
+                        class="dropdown-item categories-list alert alert-danger"
                         href="{{ path('category_index', {'categoryName': category.name}) }}">
                     {{ category.name }}</a>
             </li>
