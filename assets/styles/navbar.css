@@ -23,3 +23,6 @@ form input {
     border-radius: 5px;
     width: 100%;
 }
+.categories-list a{
+    color: var(--first-secondary-color);
+}
