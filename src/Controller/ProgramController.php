@@ -44,7 +44,6 @@ class ProgramController extends AbstractController
         return $this->render('program/index.html.twig', [
             'programs' => $program,
             'form'=> $form,
-            //'programDuration'=>$programDuration->calculate($test)
         ]);
     }
     // ---- methode new pour ajouter un nouveau programme ----

@@ -14,4 +14,8 @@ final class SearchProgram
     {
         $this->programRepository = $programRepository;
     }
+
+    public function search(string $search):array{
+        return $this->programRepository->findLikeName($search);
+    }
 }
