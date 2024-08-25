@@ -63,6 +63,9 @@ class Program
 
     #[ORM\ManyToOne(inversedBy: 'programs')]
     private ?User $owner = null;
+    
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy:'watchlist')]
+    private Collection $viewers;
 
     public function __construct()
     {
@@ -223,6 +226,24 @@ public function getPosterFile(): ?File
     public function setOwner(?User $owner): static
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of viewers
+     */
+    public function getViewers(): Collection
+    {
+        return $this->viewers;
+    }
+
+    /**
+     * Set the value of viewers
+     */
+    public function setViewers(Collection $viewers): self
+    {
+        $this->viewers = $viewers;
 
         return $this;
     }

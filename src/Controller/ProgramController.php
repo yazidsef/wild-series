@@ -124,7 +124,7 @@ class ProgramController extends AbstractController
         ]);
     }
 
-    //methode showEpisode pour afficher les details d'un episode
+    //methode showEpisode pour afficher les details d'une episode
     #[Route('/{program}/season/{season}/episode/{slug}',name:'episode_show')]
     public function showEpisode( string $program ,Episode $episode ,Season $season , ProgramRepository $programRepository ,
      Request $request , EntityManagerInterface $entityManager):Response
@@ -152,6 +152,7 @@ class ProgramController extends AbstractController
         ]);
     }
 
+    ///methode pour ajouter un program a la Watchlist 
 
     
 }
