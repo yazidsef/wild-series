@@ -26,11 +26,9 @@ class ProgramController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(Request $request,ProgramRepository $programRepository , PaginatorInterface $paginator): Response
     {
-        $form = $this->createForm(SearchProgramType::class);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid())
+        $search = $request->query->get('search', '');
+        if(!empty($search))
         {
-            $search = $request->query->get('search', '');
             $program = $programRepository->findLikeName($search);
         }else{
             $program = $programRepository->findAll();
@@ -43,7 +41,7 @@ class ProgramController extends AbstractController
         //$test = 'uazd';
         return $this->render('program/index.html.twig', [
             'programs' => $program,
-            'form'=> $form,
+           
         ]);
     }
     // ---- methode new pour ajouter un nouveau programme ----

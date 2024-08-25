@@ -1,5 +1,6 @@
 <div{{ attributes }}>
-    <form action="#">
-        <input type="search" name="search" id="">
+     <form method="GET" action="{{ path('program_index') }}">
+        <input type="search" name="search" id="search" value="{{ app.request.query.get('search') }}" placeholder="Rechercher une série..." />
+        <button type="submit">Rechercher</button>
     </form>
 </div>
