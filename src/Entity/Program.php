@@ -8,8 +8,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: ProgramRepository::class)]
+#[Vich\Uploadable] //on ajoute cette annotation pour dire que cette entité est liée à un fichier
 class Program
 {
     #[ORM\Id]
@@ -27,10 +30,13 @@ class Program
     #[Assert\NotEqualTo(value: 'plus belle la vie', message: 'On parle de vraies séries')]
     private ?string $synopsis = null;
 
-    #[ORM\Column(length: 255)]
-    #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
-
+    //poster pour stocker le nom du fichier
+    #[ORM\Column(length: 255 , nullable: true)]
     private ?string $poster = null;
+
+    //on ajoute cette propriété pour stocker le fichier
+    #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'poster')]
+    private ?File $posterFile = null;
 
     #[ORM\Column(length: 150)]
     #[Assert\NotBlank (message: 'Ne laissez pas ce champ vide')]
@@ -54,6 +60,9 @@ class Program
 
     #[ORM\Column(length: 150)]
     private ?string $slug = null;
+
+    #[ORM\ManyToOne(inversedBy: 'programs')]
+    private ?User $owner = null;
 
     public function __construct()
     {
@@ -101,6 +110,16 @@ class Program
 
         return $this;
     }
+    public function setPosterFile(File $image = null): Program
+{
+   $this->posterFile = $image;
+   return $this;
+}
+
+public function getPosterFile(): ?File
+{
+   return $this->posterFile;
+}
 
     public function getCountry(): ?string
     {
@@ -192,6 +211,18 @@ class Program
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): static
+    {
+        $this->owner = $owner;
 
         return $this;
     }

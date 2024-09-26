@@ -13,12 +13,9 @@ class Comment
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+    
     #[ORM\ManyToOne(inversedBy: 'comments')]
-    private ?User $user_id = null;
-
-    #[ORM\ManyToOne(inversedBy: 'comments')]
-    private ?Episode $episode_id = null;
+    private ?Episode $episode = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $comment = null;
@@ -26,31 +23,23 @@ class Comment
     #[ORM\Column]
     private ?int $rate = null;
 
+    #[ORM\ManyToOne(inversedBy: 'comments')]
+    private ?User $author = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserId(): ?User
+
+    public function getEpisode(): ?Episode
     {
-        return $this->user_id;
+        return $this->episode;
     }
 
-    public function setUserId(?User $user_id): static
+    public function setEpisode(?Episode $episode): static
     {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    public function getEpisodeId(): ?Episode
-    {
-        return $this->episode_id;
-    }
-
-    public function setEpisodeId(?Episode $episode_id): static
-    {
-        $this->episode_id = $episode_id;
+        $this->episode = $episode;
 
         return $this;
     }
@@ -75,6 +64,18 @@ class Comment
     public function setRate(int $rate): static
     {
         $this->rate = $rate;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): static
+    {
+        $this->author = $author;
 
         return $this;
     }

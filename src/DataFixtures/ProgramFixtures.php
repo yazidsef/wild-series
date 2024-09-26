@@ -5,10 +5,11 @@ namespace App\DataFixtures;
 use App\Entity\Program;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker\Factory;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class ProgramFixtures extends Fixture
+class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
     private $slugger;
     public function __construct(SluggerInterface $slugger)
@@ -22,9 +23,10 @@ class ProgramFixtures extends Fixture
             $program = new Program();
             $program->setTitle($faker->lastName());
             $program->setSynopsis($faker->text);
-            $program->setPoster($faker->name);
+            $program->setPoster(rand(9,19).'.png');
             $program->setCategory($this->getReference('category_'.rand(0,9)));
             $program->setCountry($faker->country);
+            $program->setOwner($this->getReference('admin'));
             $program->setSlug($this->slugger->slug($program->getTitle()));
             $program->setSlug($this->slugger->slug($program->getTitle()));
             $this->addReference('program_'.$i, $program);
@@ -36,6 +38,6 @@ class ProgramFixtures extends Fixture
     }
     public function getDependencies()
     {
-        return [CategoryFixtures::class];
+        return [CategoryFixtures::class, UserFixtures::class];
     }
 }

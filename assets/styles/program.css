@@ -138,6 +138,7 @@ video {
     box-shadow: 0.5rem 0.5rem 0.5rem 0.5rem rgb(0, 0, 0);
     margin: 0 auto;
     filter: opacity(2);
+    
 }
 
 .pagination {
@@ -203,5 +204,19 @@ video {
     width: 100%;
     font-size: 1.6rem;
     letter-spacing: 3px;
+
+}
+.image-height{
+    height: 315px;
+
+}
+.card-title{
+    font-size: 1.8rem;
+    font-weight: 400;
+    width: 100%;
+    height: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
 }

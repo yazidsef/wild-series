@@ -1,0 +1,26 @@
+<nav>
+	<div>
+		<a href="{{path('program_index')}}">
+			<h1>Wild series</h1>
+		</a>
+	</div>
+
+	   
+	{{component('SearchProgram')}}
+
+	<div>
+		<ul class="navbar-list">
+			<li><a href="{{path('program_index')}}">Home</a></li>
+			
+			 {{ component('Navbar') }}
+			<li>
+			{% if app.user %}
+				<a href="{{ path('app_logout') }}"> Se déconnecter</a>
+				{% else %}
+				<a href="{{ path('app_login') }}"> Se connecter</a>
+			{% endif %}
+			
+			</li>
+		</ul>
+	</div> 
+</nav>

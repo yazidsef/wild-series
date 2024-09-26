@@ -27,8 +27,6 @@ class WatchList
     #[ORM\Column(nullable: true)]
     private ?bool $adoré = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?User $user_id = null;
 
     public function __construct()
     {
@@ -94,15 +92,5 @@ class WatchList
         return $this;
     }
 
-    public function getUserId(): ?User
-    {
-        return $this->user_id;
-    }
 
-    public function setUserId(?User $user_id): static
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
 }

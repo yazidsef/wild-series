@@ -1,15 +1,16 @@
 {% extends "base.html.twig" %}
+{% block title %} {{program.title}} {% endblock %}
 
 {% block body %}
 
 
 	<div class="details">
 		<div class="program-image">
-			<img src="{{ asset('build/images/e1.jpg') }}" alt="">
+			
 		</div>
 
 		<!-- title of the movie -->
-		<h2 class="m-auto show-title">{{seasons.number}}</h2>
+		<h2 class="m-auto show-title">Saison {{seasons.number}}</h2>
 
 		<!-- details of the movie -->
 		<div class="row row-show justify-content-around">

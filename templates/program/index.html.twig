@@ -1,6 +1,7 @@
-{% extends 'base.html.twig' %} {% block title %}WILD SERIES {% endblock %} {%
-block body %}
+{% extends 'base.html.twig' %} {% block title %}WILD SERIES {% endblock %} 
+{% block body %}
 <header>
+
   <video autoplay muted loop id="bg-video">
     <source
       src="{{ asset('build/images/4761738-uhd_4096_2160_25fps.mp4') }}"
@@ -13,7 +14,7 @@ block body %}
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veniam
       laudantium dolores. Libero, facere possimus exercitationem consequuntur ea
-      quasi. Nostrum? {{ programDuration }}
+      quasi. Nostrum? 
     </p>
   </div>
 </header>
@@ -25,12 +26,12 @@ block body %}
         <div class="card" style="width: 18rem">
           <a href="{{ path('program_show', { slug: program.slug }) }}">
             <img
-              src="{{ asset('build/images/e1.jpg') }}"
-              class="card-img-top"
-              alt="..."
+              src="{{ asset('uploads/images/posters/' ~ program.poster) }}"
+              class="card-img-top image-height"
+              alt="{{ program.title }}"
             />
             <div class="card-body">
-              <h2 class="text-black">
+              <h2 class="text-black card-title">
                 {{ program.title }}
               </h2>
               <p class="card-text text-black description">
@@ -50,11 +51,7 @@ block body %}
         <img src="{{ asset('build/images/johnwick.png') }}" alt="" />
         <h3 class="johnwick-title">JOHN WICK</h3>
         <p class="johnwick-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eum
-          expedita enim facilis neque molestiae quasi facere qui temporibus
-          error. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Dignissimos quaerat nulla quia neque reiciendis ex tempora sapiente
-          esse aliquid odio.
+          John Wick est un assassin légendaire, redouté dans le monde du crime. Après avoir perdu sa femme, il se retrouve plongé dans une spirale de vengeance lorsqu'un groupe de criminels s'en prend à ce qui lui reste de plus cher. Chaque coup porté par John est un rappel de sa maîtrise inégalée des armes à feu et de son implacable détermination. Ce n'est pas juste une quête de vengeance, c'est une déclaration : ne jamais sous-estimer un homme sans rien à perdre. 
         </p>
       </div>
       {% endif %} {% if loop.index == 19%}

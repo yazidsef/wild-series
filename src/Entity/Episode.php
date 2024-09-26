@@ -39,7 +39,7 @@ class Episode
     /**
      * @var Collection<int, Comment>
      */
-    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'episodes')]
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'episode')]
     private Collection $comments;
 
     #[ORM\Column(length: 255)]
@@ -130,7 +130,7 @@ class Episode
     {
         if (!$this->comments->contains($comment)) {
             $this->comments->add($comment);
-            $comment->setEpisodeId($this);
+            $comment->setEpisode($this);
         }
 
         return $this;
@@ -140,8 +140,8 @@ class Episode
     {
         if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($comment->getEpisodeId() === $this) {
-                $comment->setEpisodeId(null);
+            if ($comment->getEpisode() === $this) {
+                $comment->setEpisode(null);
             }
         }
 

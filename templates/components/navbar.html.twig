@@ -1,21 +1,20 @@
-<nav>
-	<div>
-		<a href="{{path('program_index')}}">
-			<h1>Wild series</h1>
-		</a>
-	</div>
-
-	<div>
-		<form action="#">
-			<input type="search" placeholder="search">
-		</form>
-	</div>
-
-	<div>
-		<ul>
-			<li><a href="{{path('program_index')}}">Home</a></li>
-			<li><a href="{{path('category_index')}}">Categories</a></li>
-			<li><a href="{{path('app_actor_index')}}">Acteurs</a></li>
-		</ul>
-	</div> 
-</nav>
+<li{{ attributes }} class="nav-item dropdown bg-white p-2 text-black-50 rounded-3">
+    <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+        Categories
+    </a>
+    <ul class="dropdown-menu">
+        {% for category in this.categories %}
+            <li>
+                <a
+                        class="dropdown-item categories-list alert alert-danger"
+                        href="{{ path('category_index', {'categoryName': category.name}) }}">
+                    {{ category.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</li>

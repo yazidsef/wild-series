@@ -1,33 +1,98 @@
 {% extends "base.html.twig" %}
-
+{% block title %}
+	{{episode.title}}
+{% endblock %}
+{% block style %}
+	{% block stylesheets %}
+			{{ encore_entry_link_tags('episode') }}
+		{% endblock %}
+	{% block javascripts %}
+			{{ encore_entry_script_tags('episode') }}
+	{% endblock %}
+{% endblock %}
 {% block body %}
 
 
 	<div class="details">
 		<div class="program-image">
-			<img src="{{ asset('build/images/e1.jpg') }}" alt="">
+			<img
+              src="{{ asset('uploads/images/posters/' ~ program.poster) }}"
+              class="card-img-top image-height"
+              alt="{{ program.title }}"
+            />
 		</div>
 
 		<!-- title of the movie -->
-		<h2 class="m-auto show-title">{{seasons.number}}</h2>
+		<h2 class="m-auto show-title">{{episode.number}}</h2>
 
 		<!-- details of the movie -->
 		<div class="row row-show justify-content-around">
 			<div class="col-5 details-description ">
 				<h2 class="text-center">Histoire</h2>
-				<p>{{ seasons.description }}
+				<p>{{ episode.synonpsis }}
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam eum possimus nisi quae quasi recusandae
 				</p>
 				<span class="fa fa-star checked"></span>
 				<span class="fa fa-star"></span>
 			</div>
 			<div class="col-4 details-seasons ">
-				<h3>informatios</h3>
-				<ul
-					class="d-grid">{# {% for episode in seasons.episodes %}{% endfor %}#}
+				<h3>Commentaires</h3>
+				<ul class="mb-5">
+					{% for comment in episode.comments %}
+						<li>
+							<div>
+								{{ comment.comment }}
+								<br>
+								{# chaque utilisateur peut supprimer son propre commentaire #}
+								{% if comment.author.id == app.user.id %}
+									<a href="{{path('comment_delete' , {id:comment.id})}}" class="text-danger"> supprimer mon commentaire </a>
+								{% endif %}
 
-
+								{# l'admin peut supprimer n'importe quel commentaire  #}
+								{% if is_granted("ROLE_ADMIN") %}
+									<a href="{{path('comment_delete' , {id:comment.id})}}"> supprimer ce commentaire !</a>				
+								{% endif %}
+								
+							</div>
+							<div>            
+								<span class="stars">
+									{% for i in 1..5 %}
+										{% if i <= comment.rate %}
+											<span class="star filled">&#9733;</span> {# étoile remplie #}
+										{% else %}
+											<span class="star">&#9733;</span> {# étoile vide #}
+										{% endif %}
+									{% endfor %}
+								</span>
+							</div>
+						</li>
+					{% endfor %}
 				</ul>
+
+			{# affichage de formulaire de commentaire si un utilisateur est connecté #}
+				{% if app.user %}
+       			{{ form_start(form) }}
+
+				<div class="form-group">
+					{{ form_label(form.comment) }}
+					{{ form_widget(form.comment, {'attr': {'class': 'form-control'}}) }}
+					{{ form_errors(form.comment) }}
+				</div>
+
+				<div class="form-group">
+					<label for="rating">Votre note :</label>
+					<div id="star-rating">
+						{% for i in 1..5 %}
+							<span class="star" data-value="{{ i }}">&#9733;</span>
+						{% endfor %}
+					</div>
+					{{ form_widget(form.rate) }}
+				</div>
+
+				<button class="btn btn-primary">Enregistrer</button>
+
+{{ form_end(form) }}
+    {% endif %}
 			</div>
 		</div>
 	</div>

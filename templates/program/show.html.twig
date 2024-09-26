@@ -1,13 +1,19 @@
 {% extends "base.html.twig" %}
-
+{% block title %}
+	{{program.title}}
+{% endblock %}
 {% block body %}
-
-
 	<div class="details">
 		<div class="program-image">
-			<img src="{{ asset('build/images/e1.jpg') }}" alt="">
+			<img
+              src="{{ asset('uploads/images/posters/' ~ program.poster) }}"
+              class="card-img-top image-height"
+              alt="{{ program.title }}"
+            />
 		</div>
-
+		{% if is_granted("ROLE_ADMIN") %}
+			  <a href="{{ path('program_edit', { 'id': program.id} ) }}" class="p-3 text-center  alert alert-danger">Éditer</a>
+		{% endif %}
 		<!-- title of the movie -->
 		<h2 class="m-auto show-title">{{program.title}}</h2>
 		<h3 class="m-auto show-category">Acteurs</h3>
@@ -18,7 +24,7 @@
 			<li>Aucun acteur pour cette série
 			</li>
 		{% endfor %}
-
+		
 		<!-- details of the movie -->
 		<div class="row row-show justify-content-around">
 			<div class="col-5 details-description ">
